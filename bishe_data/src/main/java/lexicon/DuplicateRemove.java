@@ -10,7 +10,7 @@ import util.Util;
 public class DuplicateRemove {
 
 	public static void main(String[] args) {
-		duplicateRemove("verbLexicon_1.txt", "verbLexicon_2_source.txt", "verbLexicon_2");
+		duplicateRemove("verbLexicon_1.txt", "verbLexicon_2_source.txt", "verbLexicon_2.txt");
 	}
 	
 	static void duplicateRemove(String filename1, String filename2, String outputPath){

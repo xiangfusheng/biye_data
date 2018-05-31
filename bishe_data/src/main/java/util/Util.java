@@ -7,12 +7,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import com.sun.org.glassfish.external.statistics.Statistic;
 
 public class Util {
 	public static BufferedReader getBufferedReaderByPath(String path) throws FileNotFoundException {
@@ -45,4 +47,5 @@ public class Util {
 		
 		return res;
 	}
+	
 }
