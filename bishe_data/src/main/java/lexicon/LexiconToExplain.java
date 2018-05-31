@@ -12,7 +12,9 @@ import util.Util;
 import baiduhanyu.GetBaiduExplain;
 
 import com.huaban.analysis.jieba.JiebaSegmenter;
-
+/**
+ * Õ¨“Â¥ 
+ */
 public class LexiconToExplain {
 
 	public static void main(String[] args) throws Exception {
@@ -44,5 +46,14 @@ public class LexiconToExplain {
 	}
 	
 	
+	static List<String> delStopWd(Set<String> stopwordSetZn, List<String> sentenceByJieba){
+		List<String> res = new ArrayList<>();
+		for(String s : sentenceByJieba){
+			if(!stopwordSetZn.contains(s))
+				res.add(s);
+		}
+		
+		return res;
+	}
 
 }
