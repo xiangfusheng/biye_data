@@ -20,7 +20,7 @@ import com.huaban.analysis.jieba.JiebaSegmenter;
 public class LexiconToExplain2 {
 
 	public static void main(String[] args) throws Exception {
-		String base = Util.getCLassPath();
+		String base = Util.getClassPath();
 		//原词位置
 		BufferedReader verbBr = Util.getBufferedReaderByPath(base + "lexicon/data/verbLexicon_1.txt");
 		//第一步处理位置

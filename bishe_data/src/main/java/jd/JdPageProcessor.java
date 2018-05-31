@@ -38,7 +38,7 @@ public class JdPageProcessor  implements PageProcessor {
 		String base;
 		BufferedWriter verbBw;
 		try {
-			base = Util.getCLassPath();
+			base = Util.getClassPath();
 			FileWriter fileWriter = new FileWriter(base + "lexicon/data/verbLexicon_1.txt", true);
 			while(matcher.find())
 				fileWriter.write(matcher.group(1) + "\n");

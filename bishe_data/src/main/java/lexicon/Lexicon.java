@@ -13,7 +13,7 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 public class Lexicon {
 
 	public static void main(String[] args) throws Exception {
-		String base = Util.getCLassPath();
+		String base = Util.getClassPath();
 		//原词位置
 		BufferedReader sourceBr = Util.getBufferedReaderByPath(base + "lexicon/data/source.txt");
 		//第一步处理位置
@@ -23,7 +23,7 @@ public class Lexicon {
 		String line = null;
 		
 		//词性标注
-		MaxentTagger tagger = new MaxentTagger(Util.getCLassPath()+"static_resource/models/chinese-distsim.tagger");           
+		MaxentTagger tagger = new MaxentTagger(Util.getClassPath()+"static_resource/models/chinese-distsim.tagger");           
 	     
 		while((line = sourceBr.readLine()) != null){
 			String tagged = tagger.tagString(line);

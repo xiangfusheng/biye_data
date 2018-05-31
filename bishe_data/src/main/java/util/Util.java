@@ -23,11 +23,11 @@ public class Util {
 		FileWriter verbLexiconW = new FileWriter(path);
 		return new BufferedWriter(verbLexiconW);
 	}
-	public static String getCLassPath() throws UnsupportedEncodingException{
+	public static String getClassPath() throws UnsupportedEncodingException{
 		return System.getProperty("user.dir") + "/src/main/java/";
 	}
 	public static Set<String> getStopwordSetZn() throws Exception{
-		BufferedReader br = getBufferedReaderByPath(getCLassPath() + "lexicon/data/chineseStopwords.txt");
+		BufferedReader br = getBufferedReaderByPath(getClassPath() + "lexicon/data/chineseStopwords.txt");
 		Set<String> set = new HashSet<>();
 		String line = null;
 		while((line = br.readLine()) != null){
