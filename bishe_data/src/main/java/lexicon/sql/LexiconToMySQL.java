@@ -22,15 +22,16 @@ public class LexiconToMySQL {
 		PreparedStatement prepareStatement = null;
 		String base = Util.getClassPath();
 		//‘≠¥ Œª÷√
-		BufferedReader verbBr = Util.getBufferedReaderByPath(base + "lexicon/data/verbToExplain_1.txt");
+		BufferedReader verbBr = Util.getBufferedReaderByPath(base + "lexicon/data/verbToExplain_total.txt");
 		String line = "≤‚ ‘\t≤‚ ‘";
 		while((line = verbBr.readLine()) != null){
 			String[] split = line.split("\t");
-			String insert = "insert into lexicon (lexicon,isFunction,explained) values(?,?,?)";
+			String insert = "insert into lexicon (lexicon,isFunction,explained,isSet) values(?,?,?,?)";
 			prepareStatement = conn.prepareStatement(insert);
 			prepareStatement.setString(1, split[0]);
 			prepareStatement.setInt(2, 1);
 			prepareStatement.setString(3, split[1]);
+			prepareStatement.setInt(4, 0);
 			prepareStatement.executeUpdate();
 		}
 		

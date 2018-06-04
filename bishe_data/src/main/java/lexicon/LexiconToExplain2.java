@@ -22,10 +22,10 @@ public class LexiconToExplain2 {
 	public static void main(String[] args) throws Exception {
 		String base = Util.getClassPath();
 		//原词位置
-		BufferedReader verbBr = Util.getBufferedReaderByPath(base + "lexicon/data/verbLexicon_1.txt");
+		BufferedReader verbBr = Util.getBufferedReaderByPath(base + "lexicon/data/verbLexicon_total.txt");
 		//第一步处理位置
-		BufferedWriter verbExplainBw = Util.getBufferedWriterByPath(base + "lexicon/data/verbToExplain_1.txt");
-		BufferedWriter verbWithoutExplainBw = Util.getBufferedWriterByPath(base + "lexicon/data/verbToNoExplain_1.txt");
+		BufferedWriter verbExplainBw = Util.getBufferedWriterByPath(base + "lexicon/data/verbToExplain_total.txt");
+		BufferedWriter verbWithoutExplainBw = Util.getBufferedWriterByPath(base + "lexicon/data/verbToNoExplain_total.txt");
 		String line = null;
 		int total = 0, noExplain = 0;
 		while((line = verbBr.readLine()) != null){
