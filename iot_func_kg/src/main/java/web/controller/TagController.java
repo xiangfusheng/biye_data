@@ -82,7 +82,7 @@ public class TagController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "setIsFunction", method = RequestMethod.GET)
-	public String setIsFunction(String ids, String idsChecked){
+	public Map<String, String> setIsFunction(String ids, String idsChecked){
 		for(String id : idsChecked.split(",")){
 			Lexicon lexicon = lexiconMapper.getById(Integer.valueOf(id));
 			lexicon.setIsFunction(0);
@@ -93,24 +93,9 @@ public class TagController {
 			lexicon.setIsSet(1);
 			lexiconMapper.update(lexicon);
 		}
-		return "success";
+		return Util.getResMsg("success");
 	}
 	
-	
-	@RequestMapping(value = "classification", method = RequestMethod.GET)
-	public String classification(){
-		return "classification";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "getBaseFunctions", method = RequestMethod.GET)
-	public Map<Integer, String> getBaseFunctions(){
-		Map<Integer, String> map = new HashMap<>();
-		for(BaseFunction baseFunction : baseFunctionMapper.getAll()){
-			map.put(baseFunction.getId(), baseFunction.getBaseFunction());
-		}
-		return map;
-	}
 	
 	
 }
