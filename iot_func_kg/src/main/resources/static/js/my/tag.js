@@ -1,3 +1,4 @@
+//分页js代码
 $(document).ready(function(){
 	fillPage()
 	$("#nextPage_btn").click(function(){
@@ -12,7 +13,6 @@ $(document).ready(function(){
 		$.each($('input:checkbox'),function(){
 			checkbox.push($(this).val())
         });
-//		alert(checked.length + " " + checkbox.length )
 		$.ajax({
 	        type: 'get',
 	        url: base_url + 'setIsFunction',
@@ -34,7 +34,7 @@ function fillPage(){
 	$.ajax({
         type: 'get',
         url: base_url + 'getPageLexicons',
-        data: {"from" : next},
+        data: {"from" : next, "flag" : 1},
         dataType: 'json',
         success: function (data) {
         	$("#lexicon_div").empty()
@@ -42,8 +42,12 @@ function fillPage(){
         	var totalPages = eval('data.totalPages')
         	var currentPage = eval('data.currentPage')
             if(lexicons) {
-                $.each(lexicons,function (id, lexicon) {
-                	$("#lexicon_div").append("<input type='checkbox' id='lexicon_ck' value = " + id +"> "+lexicon+"\n");
+            	$.each(lexicons,function () {
+                	if(this.isFunction == 0){
+                		$("#lexicon_div").append("<input type='checkbox' id='lexicon_ck' checked='checked' value = " + this.id +"> "+this.lexicon+"\n");
+                	}else{
+                		$("#lexicon_div").append("<input type='checkbox' id='lexicon_ck' value = " + this.id +"> "+this.lexicon+"\n");
+                	}
                 })
                 $("#totalPages").val(totalPages);
                 $("#currentPage").val(currentPage);

@@ -42,24 +42,41 @@ public class TagController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "getPageLexicons", method = RequestMethod.GET)
-	public Map<String, Object> getPageLexicons(int from){
+	public Map<String, Object> getPageLexicons(int from, int flag){
 		Map<String, Object> map = new HashMap<>();
-		int total = lexiconMapper.count(), totalPages = total / Util.pageNums;
+		int total = lexiconMapper.count(1); 
+		
+		Map<Integer, Lexicon> lexiconMap =  null;
+		switch (flag) {
+			case 1:
+				total += lexiconMapper.count(0);
+				lexiconMap = getPageLexiconsByPageNum((from-1) * Util.pageNums);
+				break;
+			case 2:
+				lexiconMap = getPageLexiconsIsFuncByPageNum((from-1) * Util.pageNums);
+				break;
+			default:
+				break;
+		}
+		int totalPages = total / Util.pageNums;
 		if(total % Util.pageNums != 0) totalPages++;
 		map.put("totalPages", totalPages);
 		map.put("currentPage", from);
-		Map<Integer, String> lexiconMap =  getPageLexiconsByPageNum((from-1) * Util.pageNums);
 		map.put("lexiconMap", lexiconMap);
 		return map;
 	}
 	
-	
-	public Map<Integer, String> getPageLexiconsByPageNum(int from){
-		Map<Integer, String> map = new HashMap<>();
+	public Map<Integer, Lexicon> getPageLexiconsIsFuncByPageNum(int from){
+		Map<Integer, Lexicon> map = new HashMap<>();
+		for(Lexicon lexicon : lexiconMapper.getPageIsFunction(from, Util.pageNums)){
+			map.put(lexicon.getId(), lexicon);
+		}
+		return map;
+	}
+	public Map<Integer, Lexicon> getPageLexiconsByPageNum(int from){
+		Map<Integer, Lexicon> map = new HashMap<>();
 		for(Lexicon lexicon : lexiconMapper.getPage(from, Util.pageNums)){
-			if(lexicon.getIsFunction() == 1){
-				map.put(lexicon.getId(), lexicon.getLexicon());
-			}
+			map.put(lexicon.getId(), lexicon);
 		}
 		return map;
 	}

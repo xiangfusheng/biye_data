@@ -5,8 +5,10 @@ public class Lexicon {
 	private String lexicon;
 	//标注是否是功能词汇
 	private int isFunction;
-	//标注是否被设置过
+	private int baseFunctionId;
+	//isFunction标注是否被设置过
 	private int isSet;
+	
 	private String explained;
 	public int getId() {
 		return id;
@@ -37,6 +39,12 @@ public class Lexicon {
 	}
 	public void setIsSet(int isSet) {
 		this.isSet = isSet;
+	}
+	public int getBaseFunctionId() {
+		return baseFunctionId;
+	}
+	public void setBaseFunctionId(int baseFunctionId) {
+		this.baseFunctionId = baseFunctionId;
 	}
 	
 	
